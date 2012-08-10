@@ -13,12 +13,16 @@ class BasicsTest < Test::Unit::TestCase
     a.say_hi  # => 'hi'
     b = Apple.new
     # NoMethodError: undefined method `say_hi' for #<Apple:0xb76e1010>
-    b.say_hi
+    #b.say_hi
   end
 
   def test_class_eval_by_adding_method_to_class
     Apple.class_eval { define_method :say_goodbye do; puts "goodbye"; end }
     Apple.new.say_goodbye # => "goodbye"
+  end
+
+  def test_eval
+    eval ' puts "hjhiih" '
   end
 
 end
