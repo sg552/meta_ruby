@@ -1,30 +1,14 @@
+# concept: a method on a single instance .
+# e.g.
+# methods
+#
 class Apple
-  def self.color
-    "red"
-  end
-  class << self
-    def size
-      "big"
-    end
-  end
+end
+a = Apple.new
+def a.say_hi
+  puts "hihihi, from instance #{a}"
 end
 
-require 'test/unit'
-class SingletonTest < Test::Unit::TestCase
-  def test_regular_definition
-    assert_equal "red", Apple.color
-    assert_equal "big", Apple.size
-  end
-  def test_example22_
-    obj="222"
-    class << obj
-      def singleton_method
-        "x"
-      end
-    end
-    assert_equal "x", obj.singleton_method
-    "222".singleton_method
-    "333".singleton_method
-  end
-end
-
+a.say_hi  # 'hihihi, from ...'
+b = Apple.new
+b.say_hi # Exception: undefined_error
